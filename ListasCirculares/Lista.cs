@@ -11,6 +11,7 @@ namespace ListasCirculares
     {
         Nodo nodoInicial;
         Nodo nodoActual;
+        
         public Lista()
         {
             nodoInicial = new Nodo(siguiente: nodoInicial);

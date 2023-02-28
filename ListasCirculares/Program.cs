@@ -23,7 +23,6 @@ namespace ListasCirculares
             lista.AgregarNodoInicio("Cero");
             Console.WriteLine(lista.Recorrer());
 
-
             Nodo NodoBusqueda = lista.Buscar("Uno");
             if (NodoBusqueda != null)
             {
@@ -34,20 +33,20 @@ namespace ListasCirculares
                 Console.WriteLine("No encontrado!");
             }
 
-            Nodo NodoBusquedaAnterior = lista.BuscarAnterior("Dos");
-            if (NodoBusquedaAnterior != null)
+            Console.WriteLine("");
+            Console.WriteLine("Eliminando el uno");
+            lista.BorrarNodo("Uno");
+            Console.WriteLine(lista.Recorrer());
+
+            Nodo nodoFinal = Buscar(3);
+            if (nodoFinal != null)
             {
-                Console.WriteLine(NodoBusquedaAnterior.Valor);
+                Console.WriteLine(nodoFinal.Valor+" el nodo siguiente es: "+nodoFinal.Siguiente.Valor);
             }
             else
             {
                 Console.WriteLine("No encontrado!");
             }
-
-            Console.WriteLine("");
-            Console.WriteLine("Eliminando el uno");
-            lista.BorrarNodo("Uno");
-            Console.WriteLine(lista.Recorrer());
 
             Console.ReadKey();
         }
