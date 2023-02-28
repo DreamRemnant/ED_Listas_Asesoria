@@ -80,7 +80,7 @@ namespace ListasDoblementeLigadas
             return null;
         }
 
-        public void EliminarNodo(string valor)
+        public void Borrar(string valor)
         {
             nodoActual = Buscar(valor);
             if (nodoActual != null)

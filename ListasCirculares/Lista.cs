@@ -13,7 +13,8 @@ namespace ListasCirculares
         Nodo nodoActual;
         public Lista()
         {
-            nodoInicial = new Nodo(siguiente: nodoInicial);
+            nodoInicial = new Nodo();
+            nodoInicial.Siguiente = nodoInicial;
         }
         public bool ValidaVacio()
         {
@@ -39,15 +40,30 @@ namespace ListasCirculares
             }
             return datos;
         }
-        public void Agregar(string valor)
+        public void AgregarFinal(string valor)
         {
-            nodoActual = nodoInicial;
-            while (nodoActual.Siguiente != nodoInicial)
+
+            if (nodoInicial.Siguiente == nodoInicial)
             {
-                nodoActual = nodoActual.Siguiente;
+                Nodo nodoNuevo = new Nodo(valor, nodoInicial);
+                nodoInicial.Siguiente = nodoNuevo;
             }
-            Nodo nodoNuevo = new Nodo(valor, nodoInicial);
-            nodoActual.Siguiente = nodoNuevo;
+            else
+            {
+                nodoActual = nodoInicial;
+                while (nodoActual.Siguiente != nodoInicial)
+                {
+                    nodoActual = nodoActual.Siguiente;
+                }
+                Nodo nodoNuevo = new Nodo(valor, nodoInicial);
+                nodoActual.Siguiente = nodoNuevo;
+            }
+                
+        }
+        public void AgregarInicio(string valor)
+        {
+            Nodo nuevoNodo = new Nodo(valor, nodoInicial.Siguiente);
+            nodoInicial.Siguiente = nuevoNodo;
         }
         public Nodo Buscar(string valor)
         {
@@ -68,11 +84,7 @@ namespace ListasCirculares
             return null;
         }
 
-        public void AgregarNodoInicio(string valor)
-        {
-            Nodo nuevoNodo = new Nodo(valor, nodoInicial.Siguiente);
-            nodoInicial.Siguiente = nuevoNodo;
-        }
+
 
         public Nodo BuscarAnterior(string valor)
         {
@@ -93,7 +105,7 @@ namespace ListasCirculares
             return null;
         }
 
-        public void BorrarNodo(string valor)
+        public void Borrar(string valor)
         {
             if (ValidaVacio() == false)
             {

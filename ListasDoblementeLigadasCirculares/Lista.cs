@@ -12,7 +12,9 @@ namespace ListasDoblementeLigadasCirculares
         Nodo nodoActual;
         public Lista()
         {
-            nodoInicial = new Nodo(anterior: nodoInicial,siguiente: nodoInicial);
+            nodoInicial = new Nodo();
+            nodoInicial.Siguiente = nodoInicial;
+            nodoInicial.Anterior = nodoInicial;
         }
         public bool ValidaVacio()
         {
@@ -42,14 +44,25 @@ namespace ListasDoblementeLigadasCirculares
         }
         public void AgregarFinal(string valor)
         {
-            nodoActual = nodoInicial;
-            while (nodoActual.Siguiente != nodoInicial)
+            
+            if (nodoInicial.Siguiente == nodoInicial)
             {
-                nodoActual = nodoActual.Siguiente;
+                Nodo nodoNuevo = new Nodo(valor, nodoInicial, nodoInicial);
+                nodoInicial.Siguiente = nodoNuevo;
+                nodoInicial.Anterior = nodoNuevo;
             }
-            Nodo nodoNuevo = new Nodo(valor,nodoActual, nodoInicial);
-            nodoActual.Siguiente = nodoNuevo;
-            nodoInicial.Anterior = nodoNuevo;
+            else
+            {
+                nodoActual = nodoInicial;
+                while (nodoActual.Siguiente != nodoInicial)
+                {
+                    nodoActual = nodoActual.Siguiente;
+                }
+                Nodo nodoNuevo = new Nodo(valor, nodoActual, nodoInicial);
+                nodoActual.Siguiente = nodoNuevo;
+                nodoInicial.Anterior = nodoNuevo;
+            }
+            
         }
 
         public void AgregarInicio(string valor)
@@ -82,7 +95,7 @@ namespace ListasDoblementeLigadasCirculares
             return null;
         }
 
-        public void EliminarNodo(string valor)
+        public void Borrar(string valor)
         {
             nodoActual = Buscar(valor);
             if (nodoActual != null)

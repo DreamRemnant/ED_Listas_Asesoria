@@ -39,7 +39,7 @@ namespace ListasSimplementeLigadas
             }
             return datos;
         }
-        public void Agregar(string valor)
+        public void AgregarFinal(string valor)
         {
             nodoActual = nodoInicial;
             while (nodoActual.Siguiente != null)
@@ -48,6 +48,18 @@ namespace ListasSimplementeLigadas
             }
             Nodo nodoNuevo = new Nodo(valor);
             nodoActual.Siguiente= nodoNuevo;
+        }
+
+        public void AgregarInicio(string valor)
+        {
+            if (ValidaVacio())
+            {
+                AgregarFinal(valor);
+                return;
+            }
+            Nodo nodoNuevo = new Nodo(valor, nodoInicial.Siguiente);
+        
+            nodoInicial.Siguiente = nodoNuevo;
         }
         public Nodo Buscar(string valor)
         {
@@ -86,7 +98,7 @@ namespace ListasSimplementeLigadas
             return null;
         }
 
-        public void BorrarNodo(string valor)
+        public void Borrar(string valor)
         {
             if (ValidaVacio() == false)
             {
