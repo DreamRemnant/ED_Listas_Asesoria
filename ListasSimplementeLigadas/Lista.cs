@@ -63,9 +63,42 @@ namespace ListasSimplementeLigadas
                 {
                     return nodoActual;
                 }
-                return null;
             }
+            return null;
+        }
 
+        public Nodo BuscarAnterior(string valor)
+        {
+            if (ValidaVacio() == false)
+            {
+                Nodo nodoBusqueda = nodoInicial;
+
+                while (nodoBusqueda.Siguiente != null
+                            && nodoBusqueda.Siguiente.Valor != valor)
+                {
+                    nodoBusqueda = nodoBusqueda.Siguiente;
+                    if (nodoBusqueda.Siguiente.Valor == valor)
+                    {
+                        return nodoBusqueda;
+                    }
+                }
+            }
+            return null;
+        }
+
+        public void BorrarNodo(string valor)
+        {
+            if (ValidaVacio() == false)
+            {
+                nodoActual = Buscar(valor);
+
+                if (nodoActual != null)
+                {
+                    Nodo nodoAnterior = BuscarAnterior(valor);
+                    nodoAnterior.Siguiente = nodoActual.Siguiente;
+                    nodoActual.Siguiente = null;
+                }
+            }
         }
     }
 }

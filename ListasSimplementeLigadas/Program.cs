@@ -10,7 +10,6 @@ namespace ListasSimplementeLigadas
     {
         static void Main(string[] args)
         {
-            Nodo nodo = new Nodo();
         }
     }
 }
