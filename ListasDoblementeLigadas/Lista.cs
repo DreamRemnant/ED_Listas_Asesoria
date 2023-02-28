@@ -39,15 +39,27 @@ namespace ListasDoblementeLigadas
             }
             return datos;
         }
-        public void Agregar(string valor)
+        public void AgregarFinal(string valor)
         {
             nodoActual = nodoInicial;
             while (nodoActual.Siguiente != null)
             {
                 nodoActual = nodoActual.Siguiente;
             }
-            Nodo nodoNuevo = new Nodo(valor);
+            Nodo nodoNuevo = new Nodo(valor,nodoActual);
             nodoActual.Siguiente = nodoNuevo;
+        }
+
+        public void AgregarInicio(string valor)
+        {
+            if (ValidaVacio())
+            {
+                AgregarFinal(valor);
+                return;
+            }
+            Nodo nodoNuevo = new Nodo(valor,nodoInicial,nodoInicial.Siguiente);
+            nodoInicial.Siguiente.Anterior = nodoNuevo;
+            nodoInicial.Siguiente = nodoNuevo;
         }
         public Nodo Buscar(string valor)
         {
@@ -55,6 +67,7 @@ namespace ListasDoblementeLigadas
             {
                 return null;
             }
+
             nodoActual = nodoInicial;
             while (nodoActual.Siguiente != null)
             {
@@ -63,9 +76,23 @@ namespace ListasDoblementeLigadas
                 {
                     return nodoActual;
                 }
-                return null;
             }
+            return null;
+        }
 
+        public void EliminarNodo(string valor)
+        {
+            nodoActual = Buscar(valor);
+            if (nodoActual != null)
+            {
+                nodoActual.Anterior.Siguiente = nodoActual.Siguiente;
+                if (nodoActual.Siguiente != null)
+                {
+                    nodoActual.Siguiente.Anterior = nodoActual.Anterior;
+                }
+                nodoActual.Siguiente = null;
+                nodoActual.Anterior = null;
+            }
         }
     }
 }
