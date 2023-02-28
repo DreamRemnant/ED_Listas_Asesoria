@@ -49,6 +49,12 @@ namespace ListasSimplementeLigadas
             Nodo nodoNuevo = new Nodo(valor);
             nodoActual.Siguiente= nodoNuevo;
         }
+        public void AgregarNodoInicio(string valor)
+        {
+            nodoActual = nodoInicial;
+            Nodo nuevoNodo = new Nodo(valor, nodoActual.Siguiente);
+            nodoActual.Siguiente = nuevoNodo;
+        }
         public Nodo Buscar(string valor)
         {
             if (ValidaVacio())
@@ -64,6 +70,28 @@ namespace ListasSimplementeLigadas
                     return nodoActual;
                 }
             }
+            return null;
+        }
+        public Nodo BuscarPorIndice(int indice)
+        {
+            int Indice = -1;
+
+            if (ValidaVacio() == false)
+            {
+                Nodo nodoBusqueda = nodoInicial;
+
+                while (nodoBusqueda.Siguiente != null)
+                {
+                    nodoBusqueda = nodoBusqueda.Siguiente;
+                    Indice++;
+
+                    if (Indice == indice)
+                    {
+                        return nodoBusqueda;
+                    }
+                }
+            }
+
             return null;
         }
 
