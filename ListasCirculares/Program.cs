@@ -38,10 +38,10 @@ namespace ListasCirculares
             lista.BorrarNodo("Uno");
             Console.WriteLine(lista.Recorrer());
 
-            Nodo nodoFinal = Buscar(3);
+            Nodo nodoFinal = lista.Buscar("Tres");
             if (nodoFinal != null)
             {
-                Console.WriteLine(nodoFinal.Valor+" el nodo siguiente es: "+nodoFinal.Siguiente.Valor);
+                Console.WriteLine(nodoFinal.Valor+", el nodo siguiente es: ["+nodoFinal.Siguiente.Valor+"]");
             }
             else
             {

@@ -14,19 +14,19 @@ namespace ListasDoblementeLigadasCirculares
 
             //Console.WriteLine(lista.RecorrerLista());
 
-            lista.Agregar("Uno");
-            lista.Agregar("Dos");
-            lista.Agregar("Tres");
+            lista.AgregarFinal("Uno");
+            lista.AgregarFinal("Dos");
+            lista.AgregarFinal("Tres");
             //Console.WriteLine(lista.RecorrerLista());
 
 
-            lista.AgregarNodoInicio("Cero");
+            lista.AgregarInicio("Cero");
             Console.WriteLine(lista.Recorrer());
 
             Nodo NodoBusqueda = lista.Buscar("Uno");
             if (NodoBusqueda != null)
             {
-                Console.WriteLine(NodoBusqueda.Valor+" con Nodo anterior: "+NodoBusqueda.anterior.Valor+" y Nodo siguiente: "NodoBusqueda.siguiente.Valor);
+                Console.WriteLine(NodoBusqueda.Valor+", con Nodo anterior: [" +NodoBusqueda.Anterior.Valor+"] y Nodo siguiente: ["+NodoBusqueda.Siguiente.Valor+"]");
             }
             else
             {
@@ -36,13 +36,13 @@ namespace ListasDoblementeLigadasCirculares
 
             Console.WriteLine("");
             Console.WriteLine("Eliminando el uno");
-            lista.BorrarNodo("Uno");
+            lista.EliminarNodo("Uno");
             Console.WriteLine(lista.Recorrer());
 
-            Nodo NodoBusqueda = lista.Buscar("Tres");
+            NodoBusqueda = lista.Buscar("Tres");
             if (NodoBusqueda != null)
             {
-                Console.WriteLine(NodoBusqueda.Valor+" con Nodo anterior: "+NodoBusqueda.anterior.Valor+" y Nodo siguiente: "NodoBusqueda.siguiente.Valor);
+                Console.WriteLine(NodoBusqueda.Valor+", con Nodo anterior: [" +NodoBusqueda.Anterior.Valor+"] y Nodo siguiente: ["+NodoBusqueda.Siguiente.Valor+"]");
             }
             else
             {

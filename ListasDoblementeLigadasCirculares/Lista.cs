@@ -12,7 +12,9 @@ namespace ListasDoblementeLigadasCirculares
         Nodo nodoActual;
         public Lista()
         {
-            nodoInicial = new Nodo(anterior: nodoInicial,siguiente: nodoInicial);
+            nodoInicial = new Nodo();
+            nodoInicial.Siguiente = nodoInicial;
+            nodoInicial.Anterior = nodoInicial;
         }
         public bool ValidaVacio()
         {
